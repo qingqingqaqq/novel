@@ -27,6 +27,7 @@ public class AuthorInfoCacheManager {
     /**
      * 查询作家信息，并放入缓存中
      */
+
     @Cacheable(cacheManager = CacheConsts.REDIS_CACHE_MANAGER,
         value = CacheConsts.AUTHOR_INFO_CACHE_NAME, unless = "#result == null")
     public AuthorInfoDto getAuthor(Long userId) {
@@ -43,9 +44,8 @@ public class AuthorInfoCacheManager {
             .penName(authorInfo.getPenName())
             .status(authorInfo.getStatus()).build();
     }
-
     @CacheEvict(cacheManager = CacheConsts.REDIS_CACHE_MANAGER,
-        value = CacheConsts.AUTHOR_INFO_CACHE_NAME)
+    value = CacheConsts.AUTHOR_INFO_CACHE_NAME)
     public void evictAuthorCache() {
         // 调用此方法自动清除作家信息的缓存
     }

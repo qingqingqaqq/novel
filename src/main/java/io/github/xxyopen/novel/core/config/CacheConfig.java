@@ -31,7 +31,7 @@ public class CacheConfig {
      * Caffeine 缓存管理器
      */
     @Bean
-    @Primary
+    @Primary //必须要加这个注解，用于标识一个Bean（组件）是首选的候选者。当有多个同类型的Bean（组件）时，使用了@Primary注解的Bean将会成为默认选择，如果没有其他限定符（如@Qualifier）指定具体要使用的Bean，则会优先选择带有@Primary注解的Bean。
     public CacheManager caffeineCacheManager() {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
 
